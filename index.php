@@ -16,11 +16,20 @@ $bot = new LINEBot($httpClient, ['channelSecret' => $channel_secret ]);
 echo "test1.5\n";
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
 echo "test1.6\n";
-$input = file_get_contents('php://input');
-$json = json_decode($input);
-$event = $json->events[0];
-echo "event".$event;
-$response = $bot->replyMessage('{replyToken}', $textMessageBuilder);
+
+$body = file_get_contents("php://input");
+$signature = $_SERVER["HTTP_".\LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
+$events = $bot->parseEventRequest($body, $signature);
+$reply_token = $event->getReplyToken();
+//echo "event".$event;
+foreach ($events as $event) {
+    if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
+        $reply_token = $event->getReplyToken();
+        $text = $event->getText();
+        $bot->replyText($reply_token, $text);
+    }
+}
+$response = $bot->replyMessage( $reply_token, $textMessageBuilder);
 echo "test.1.7\n";
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 echo "<br>test2\n";
