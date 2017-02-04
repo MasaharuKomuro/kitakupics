@@ -27,12 +27,12 @@ foreach ($events as $event) {
         $reply_token = $event->getReplyToken();
 //        $mid = $event["source"]["userId"];
         $text = $event->getText();
-        $bot->replyText($reply_token, $text.":".$mid);
+        $bot->replyText($reply_token, $text.":");
     }
 }
 $response = $bot->replyMessage( $reply_token, $textMessageBuilder);
 echo "test.1.7\n";
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+print $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 
 echo "<br>OK";
