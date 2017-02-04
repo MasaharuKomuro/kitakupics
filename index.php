@@ -11,6 +11,7 @@ $channel_secret = "90a98f5c73da5c01de4c982eca67c7f6";
 
 echo "test1";
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient( $channel_access_token );
+echo "test1.1";
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channel_secret ]);
  
 echo "test1.5";
