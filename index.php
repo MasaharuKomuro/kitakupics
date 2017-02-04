@@ -25,8 +25,9 @@ $reply_token = "";
 foreach ($events as $event) {
     if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
         $reply_token = $event->getReplyToken();
+        $mid = $event["source"]["userId"];
         $text = $event->getText();
-        $bot->replyText($reply_token, $text.":".$reply_token);
+        $bot->replyText($reply_token, $text.":".$mid);
     }
 }
 $response = $bot->replyMessage( $reply_token, $textMessageBuilder);
