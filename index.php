@@ -13,7 +13,7 @@ echo "test";
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient( $channel_access_token );
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channel_secret ]);
  
-//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-//$response = $bot->replyMessage('{replyToken}', $textMessageBuilder);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->replyMessage('{replyToken}', $textMessageBuilder);
  
-//echo $response->getHTTPStatus() . ' ' . $response->getBody();
+echo $response->getHTTPStatus() . ' ' . $response->getBody();
