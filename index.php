@@ -20,8 +20,8 @@ echo "test1.6\n";
 $body = file_get_contents("php://input");
 $signature = $_SERVER["HTTP_".\LINE\LINEBot\Constant\HTTPHeader::LINE_SIGNATURE];
 $events = $bot->parseEventRequest($body, $signature);
-$reply_token = $event->getReplyToken();
 //echo "event".$event;
+$reply_token = "";
 foreach ($events as $event) {
     if ($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage) {
         $reply_token = $event->getReplyToken();
@@ -32,4 +32,6 @@ foreach ($events as $event) {
 $response = $bot->replyMessage( $reply_token, $textMessageBuilder);
 echo "test.1.7\n";
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-echo "<br>test2\n";
+
+
+echo "<br>OK";
