@@ -16,7 +16,7 @@ $response = $bot->pushMessage($userId, $textMessageBuilder);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient( $channel_access_token );
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channel_secret ]);
 
-$path = "http://dogbag.info/img/tar_002.jpg";
+$path = "https://dzwud19fd1isz.cloudfront.net/images/dog_img_long-chihuahua.jpg";
 $imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder( $path, $path );
 $response = $bot->pushMessage($userId, $imageMessageBuilder );
 
