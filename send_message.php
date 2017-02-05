@@ -16,7 +16,8 @@ $response = $bot->pushMessage($userId, $textMessageBuilder);
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient( $channel_access_token );
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channel_secret ]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello2');
+$path = "http://dogbag.info/img/tar_002.jpg";
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder( $path, $path );
 $response = $bot->pushMessage($userId, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getBody();
