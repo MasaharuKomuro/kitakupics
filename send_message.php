@@ -20,4 +20,4 @@ $path = "http://dogbag.info/img/tar_002.jpg";
 $imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder( $path, $path );
 $response = $bot->pushMessage($userId, $imageMessageBuilder );
 
-echo $response->getHTTPStatus() . ' ' . $response->getBody();
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
